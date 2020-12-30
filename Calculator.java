@@ -313,7 +313,7 @@ public class Calculator extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public boolean eshteNumer(String teksti){
+    private boolean eshteNumer(String teksti){
         boolean rezultati=false;
         for(int i=0;i<teksti.length();i++){
             char numriTanishem=teksti.charAt(i);
