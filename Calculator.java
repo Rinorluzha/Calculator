@@ -1,13 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 
 /**
  *
  * @author ASUS
  */
+import java.text.DecimalFormat;
 public class Calculator extends javax.swing.JFrame {
     double numriPare;
     double numriDyte;
@@ -15,11 +16,11 @@ public class Calculator extends javax.swing.JFrame {
     /**
      * Creates new form Calculator
      */
-    public Calculator() {   
+    public Calculator() {
         initComponents();
         pamjaRezultatit.setEditable(false);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,6 +30,7 @@ public class Calculator extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         num7 = new javax.swing.JButton();
         num8 = new javax.swing.JButton();
         num9 = new javax.swing.JButton();
@@ -48,8 +50,13 @@ public class Calculator extends javax.swing.JFrame {
         pamjaRezultatit = new javax.swing.JTextField();
         fshijEkranin = new javax.swing.JButton();
         backspace = new javax.swing.JButton();
+        negacion = new javax.swing.JButton();
+        fshijNumTeFundit = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Calculator");
 
         num7.setText("7");
         num7.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +128,7 @@ public class Calculator extends javax.swing.JFrame {
             }
         });
 
+        presja.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         presja.setText(".");
         presja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,20 +136,23 @@ public class Calculator extends javax.swing.JFrame {
             }
         });
 
-        pjestim.setText("/");
+        pjestim.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        pjestim.setText("÷");
         pjestim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pjestimActionPerformed(evt);
             }
         });
 
-        shumezim.setText("*");
+        shumezim.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        shumezim.setText("×");
         shumezim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 shumezimActionPerformed(evt);
             }
         });
 
+        mbledhje.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         mbledhje.setText("+");
         mbledhje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +160,7 @@ public class Calculator extends javax.swing.JFrame {
             }
         });
 
+        zbritje.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         zbritje.setText("-");
         zbritje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,6 +168,7 @@ public class Calculator extends javax.swing.JFrame {
             }
         });
 
+        barazim.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         barazim.setText("=");
         barazim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +176,7 @@ public class Calculator extends javax.swing.JFrame {
             }
         });
 
-        pamjaRezultatit.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        pamjaRezultatit.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         pamjaRezultatit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         pamjaRezultatit.setToolTipText("");
         pamjaRezultatit.addActionListener(new java.awt.event.ActionListener() {
@@ -172,6 +185,7 @@ public class Calculator extends javax.swing.JFrame {
             }
         });
 
+        fshijEkranin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         fshijEkranin.setText("C");
         fshijEkranin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,9 +194,26 @@ public class Calculator extends javax.swing.JFrame {
         });
 
         backspace.setText("⌫");
+        backspace.setToolTipText("");
         backspace.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backspaceActionPerformed(evt);
+            }
+        });
+
+        negacion.setFont(new java.awt.Font("Segoe UI Symbol", 0, 11)); // NOI18N
+        negacion.setText("+/-");
+        negacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                negacionActionPerformed(evt);
+            }
+        });
+
+        fshijNumTeFundit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        fshijNumTeFundit.setText("CE");
+        fshijNumTeFundit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fshijNumTeFunditActionPerformed(evt);
             }
         });
 
@@ -193,63 +224,70 @@ public class Calculator extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(59, 59, 59)
-                            .addComponent(num0, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(presja, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(barazim, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(num4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(num5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(num6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(num1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(num2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(num3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(zbritje, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(mbledhje, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pamjaRezultatit, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pamjaRezultatit)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(negacion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(num0, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(presja, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(barazim, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(num4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(num5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(num6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(num1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(num2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(num3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(zbritje, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(mbledhje, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(num7, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                                     .addComponent(fshijEkranin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(num8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(num8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(fshijNumTeFundit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(backspace, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                                    .addComponent(num9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(num9, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                                    .addComponent(backspace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(shumezim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(pjestim, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(0, 10, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pamjaRezultatit, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pamjaRezultatit, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(fshijEkranin, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(fshijEkranin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pjestim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(backspace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(backspace, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fshijNumTeFundit, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(shumezim, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(num8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(num8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(num7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(num9, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -267,154 +305,323 @@ public class Calculator extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(presja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(num0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(barazim, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(barazim, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(negacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(num0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public boolean eshteNumer(String teksti){
+        boolean rezultati=false;
+        for(int i=0;i<teksti.length();i++){
+            char numriTanishem=teksti.charAt(i);
+            if(Character.isDigit(numriTanishem)){
+                rezultati=true;
+            }else if(numriTanishem==('.')){
+                
+            }else if(numriTanishem=='-' && i==0){
+                
+            }else{
+                return false;
+            }
+        }
+        return rezultati;
+    }
     private void num6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num6ActionPerformed
-       pamjaRezultatit.setText(pamjaRezultatit.getText()+"6");    
+        pamjaRezultatit.setText(pamjaRezultatit.getText()+"6");    
     }//GEN-LAST:event_num6ActionPerformed
 
     private void mbledhjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mbledhjeActionPerformed
-     if(operatori.isEmpty()){ 
-    numriPare=Double.parseDouble(pamjaRezultatit.getText());
-    operatori="+";
-    pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
-    }else if(pamjaRezultatit.getText().endsWith(operatori)){
-     operatori="+";
-     String nderrimi=pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1);
-     pamjaRezultatit.setText(nderrimi+operatori);
-    }
+        if(pamjaRezultatit.getText().equals(".")){
+        }else{
+            if(operatori.isEmpty()){
+                if(pamjaRezultatit.getText().length()>0){
+                    numriPare=Double.parseDouble(pamjaRezultatit.getText());
+                    operatori="+";
+                    pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
+                }else{
+                    operatori="+";
+                    pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
+                }
+                
+            }else {
+                if(pamjaRezultatit.getText().lastIndexOf(operatori)==0){
+                    if(pamjaRezultatit.getText().length()>1 ){
+                        numriPare=Double.parseDouble(pamjaRezultatit.getText());
+                        operatori="+";
+                        pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
+                    }else{
+                        operatori="+";
+                        String nderrimi=pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1);
+                        pamjaRezultatit.setText(nderrimi+operatori);
+                    }
+                }else if(pamjaRezultatit.getText().endsWith(operatori)) {
+                    operatori="+";
+                    String nderrimi=pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1);
+                    pamjaRezultatit.setText(nderrimi+operatori);
+                }else{
+                    
+                }
+            }
+        }
     }//GEN-LAST:event_mbledhjeActionPerformed
 
     private void num7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num7ActionPerformed
-    pamjaRezultatit.setText(pamjaRezultatit.getText()+"7");    
+        pamjaRezultatit.setText(pamjaRezultatit.getText()+"7");    
     }//GEN-LAST:event_num7ActionPerformed
 
     private void pamjaRezultatitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pamjaRezultatitActionPerformed
-       
-      
+        
+        
     }//GEN-LAST:event_pamjaRezultatitActionPerformed
 
     private void fshijEkraninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fshijEkraninActionPerformed
-     pamjaRezultatit.setText(""); 
-     operatori="";
+        pamjaRezultatit.setText("");
+        operatori="";
     }//GEN-LAST:event_fshijEkraninActionPerformed
 
     private void num8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num8ActionPerformed
-       pamjaRezultatit.setText(pamjaRezultatit.getText()+"8");    
+        pamjaRezultatit.setText(pamjaRezultatit.getText()+"8");    
     }//GEN-LAST:event_num8ActionPerformed
 
     private void num9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num9ActionPerformed
-       pamjaRezultatit.setText(pamjaRezultatit.getText()+"9");    
+        pamjaRezultatit.setText(pamjaRezultatit.getText()+"9");    
     }//GEN-LAST:event_num9ActionPerformed
 
     private void num4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num4ActionPerformed
-    pamjaRezultatit.setText(pamjaRezultatit.getText()+"4");    
+        pamjaRezultatit.setText(pamjaRezultatit.getText()+"4");    
     }//GEN-LAST:event_num4ActionPerformed
 
     private void num5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num5ActionPerformed
-      pamjaRezultatit.setText(pamjaRezultatit.getText()+"5");    
+        pamjaRezultatit.setText(pamjaRezultatit.getText()+"5");    
     }//GEN-LAST:event_num5ActionPerformed
 
     private void num1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num1ActionPerformed
-      pamjaRezultatit.setText(pamjaRezultatit.getText()+"1");    
+        pamjaRezultatit.setText(pamjaRezultatit.getText()+"1");    
     }//GEN-LAST:event_num1ActionPerformed
 
     private void num2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num2ActionPerformed
-      pamjaRezultatit.setText(pamjaRezultatit.getText()+"2");    
+        pamjaRezultatit.setText(pamjaRezultatit.getText()+"2");    
     }//GEN-LAST:event_num2ActionPerformed
 
     private void num3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num3ActionPerformed
-       pamjaRezultatit.setText(pamjaRezultatit.getText()+"3");    
+        pamjaRezultatit.setText(pamjaRezultatit.getText()+"3");    
     }//GEN-LAST:event_num3ActionPerformed
 
     private void num0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num0ActionPerformed
-       pamjaRezultatit.setText(pamjaRezultatit.getText()+"0");    
+        pamjaRezultatit.setText(pamjaRezultatit.getText()+"0");    
     }//GEN-LAST:event_num0ActionPerformed
 
     private void presjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_presjaActionPerformed
         if(pamjaRezultatit.getText().contains(".")){
-           if(pamjaRezultatit.getText().indexOf(operatori)>pamjaRezultatit.getText().lastIndexOf("."))
-           {
-             pamjaRezultatit.setText(pamjaRezultatit.getText()+".");  
-           }
+            if(pamjaRezultatit.getText().lastIndexOf(operatori)==(pamjaRezultatit.getText().length()-1)){
+                
+            } else{
+                if(pamjaRezultatit.getText().indexOf(operatori)>pamjaRezultatit.getText().lastIndexOf("."))
+                {
+                    pamjaRezultatit.setText(pamjaRezultatit.getText()+".");
+                }
+            }
         }else{
-            pamjaRezultatit.setText(pamjaRezultatit.getText()+".");  
+            if(pamjaRezultatit.getText().lastIndexOf(operatori)==(pamjaRezultatit.getText().length()-1)){
+                
+            }else{
+                pamjaRezultatit.setText(pamjaRezultatit.getText()+".");
+            }
         }
     }//GEN-LAST:event_presjaActionPerformed
 
     private void zbritjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zbritjeActionPerformed
-     if(operatori.isEmpty()){ 
-    numriPare=Double.parseDouble(pamjaRezultatit.getText());
-    operatori="-";
-    pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
-    }else if(pamjaRezultatit.getText().endsWith(operatori)){
-     operatori="-";
-     String nderrimi=pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1);
-     pamjaRezultatit.setText(nderrimi+operatori);
-    }
+        if(pamjaRezultatit.getText().equals(".")){
+        }else{ if(operatori.isEmpty()){
+            if(pamjaRezultatit.getText().length()>0){
+                numriPare=Double.parseDouble(pamjaRezultatit.getText());
+                operatori="-";
+                pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
+            }else{
+                operatori="-";
+                pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
+            }
+            
+        }else {
+            if(pamjaRezultatit.getText().lastIndexOf(operatori)==0){
+                if(pamjaRezultatit.getText().length()>1 ){
+                    numriPare=Double.parseDouble(pamjaRezultatit.getText());
+                    operatori="-";
+                    pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
+                }else{
+                    operatori="-";
+                    String nderrimi=pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1);
+                    pamjaRezultatit.setText(nderrimi+operatori);
+                }
+            }else if(pamjaRezultatit.getText().endsWith(operatori)) {
+                operatori="-";
+                String nderrimi=pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1);
+                pamjaRezultatit.setText(nderrimi+operatori);
+            }else{
+                
+            }
+        }
+        }
     }//GEN-LAST:event_zbritjeActionPerformed
 
     private void shumezimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shumezimActionPerformed
-     if(operatori.isEmpty()){ 
-    numriPare=Double.parseDouble(pamjaRezultatit.getText());
-    operatori="*";
-    pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
-    }else if(pamjaRezultatit.getText().endsWith(operatori)){
-     operatori="*";
-     String nderrimi=pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1);
-     pamjaRezultatit.setText(nderrimi+operatori);
-    }
+        if(pamjaRezultatit.getText().equals(".")){
+        }else{
+            if(operatori.isEmpty()){
+                if(pamjaRezultatit.getText().length()>0){
+                    if(pamjaRezultatit.getText().equals(".")){
+                        
+                    }else{
+                        numriPare=Double.parseDouble(pamjaRezultatit.getText());
+                        operatori="×";
+                        pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
+                    }
+                }
+            }else {
+                if(pamjaRezultatit.getText().startsWith(operatori)){
+                    if(pamjaRezultatit.getText().length()>1 && pamjaRezultatit.getText().lastIndexOf(operatori)==0){
+                        numriPare=Double.parseDouble(pamjaRezultatit.getText());
+                        operatori="×";
+                        pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
+                    }
+                }else if(pamjaRezultatit.getText().endsWith(operatori)) {
+                    operatori="×";
+                    String nderrimi=pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1);
+                    pamjaRezultatit.setText(nderrimi+operatori);
+                }else{
+                    
+                }
+            }
+        }
     }//GEN-LAST:event_shumezimActionPerformed
 
     private void pjestimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pjestimActionPerformed
-    if(operatori.isEmpty()){ 
-    numriPare=Double.parseDouble(pamjaRezultatit.getText());
-    operatori="/";
-    pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
-    }else if(pamjaRezultatit.getText().endsWith(operatori)){
-     operatori="/";
-     String nderrimi=pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1);
-     pamjaRezultatit.setText(nderrimi+operatori);
-    }
+        if(pamjaRezultatit.getText().equals(".")){
+        }else{
+            if(operatori.isEmpty()){
+                if(pamjaRezultatit.getText().length()>0){
+                    numriPare=Double.parseDouble(pamjaRezultatit.getText());
+                    operatori="÷";
+                    pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
+                }
+            }else {
+                if(pamjaRezultatit.getText().startsWith(operatori)){
+                    if(pamjaRezultatit.getText().length()>1 && pamjaRezultatit.getText().lastIndexOf(operatori)==0){
+                        numriPare=Double.parseDouble(pamjaRezultatit.getText());
+                        operatori="÷";
+                        pamjaRezultatit.setText(pamjaRezultatit.getText()+operatori);
+                    }
+                }else if(pamjaRezultatit.getText().endsWith(operatori)) {
+                    operatori="÷";
+                    String nderrimi=pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1);
+                    pamjaRezultatit.setText(nderrimi+operatori);
+                }else{
+                    
+                }
+            }
+        }
     }//GEN-LAST:event_pjestimActionPerformed
 
     private void barazimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barazimActionPerformed
-    if(operatori.isEmpty()){
-    pamjaRezultatit.setText(pamjaRezultatit.getText());
-    }else {
-        int indeksi=pamjaRezultatit.getText().indexOf(operatori)+1;
-        String numriDyteString=pamjaRezultatit.getText().substring(indeksi,pamjaRezultatit.getText().length());
-        numriDyte=Double.parseDouble(numriDyteString);
-        if(operatori.equals("+")){
-            pamjaRezultatit.setText(Double.toString(numriPare+numriDyte));
-        }else if(operatori.equals("-")){
-            pamjaRezultatit.setText(Double.toString(numriPare-numriDyte));
-        } else if (operatori.equals("/")){
-            pamjaRezultatit.setText(Double.toString(numriPare/numriDyte));
-        }else {
-            pamjaRezultatit.setText(Double.toString(numriPare*numriDyte));
-        }
-    }
-    operatori="";
-    
+        if(pamjaRezultatit.getText().equals(".")){
+            
+        }else{
+            if(operatori.isEmpty() || pamjaRezultatit.getText().lastIndexOf(operatori)==(pamjaRezultatit.getText().length())-1){
+                
+            }else{
+                int indeksi=pamjaRezultatit.getText().lastIndexOf(operatori)+1;
+                String numriDyteString=pamjaRezultatit.getText().substring(indeksi,pamjaRezultatit.getText().length());
+                numriDyte=Double.parseDouble(numriDyteString);
+                if(operatori.equals("+")){
+                    pamjaRezultatit.setText(String.valueOf(numriPare+numriDyte));
+                }else if(operatori.equals("-")){
+                    pamjaRezultatit.setText(String.valueOf(numriPare-numriDyte));
+                } else if (operatori.equals("÷")){
+                    if (numriDyte==0){
+                        pamjaRezultatit.setText("I pa definuar");
+                    }else{
+                        pamjaRezultatit.setText(String.valueOf(numriPare/numriDyte));
+                    }
+                }else {
+                    pamjaRezultatit.setText(String.valueOf(numriPare*numriDyte));
+                }
+                operatori="";
+            }
+        }               
     }//GEN-LAST:event_barazimActionPerformed
 
     private void backspaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backspaceActionPerformed
-    if(pamjaRezultatit.getText().isEmpty()){
-    }else if(pamjaRezultatit.getText().endsWith(operatori)){
-        pamjaRezultatit.setText(pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1));
-        operatori="";
-    }else{
-      pamjaRezultatit.setText(pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1));   
-    }
+        if(pamjaRezultatit.getText().isEmpty()){
+        }else if(pamjaRezultatit.getText().equals("I pa definuar")){
+            pamjaRezultatit.setText("");
+        }else if(pamjaRezultatit.getText().endsWith(operatori)){
+            pamjaRezultatit.setText(pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1));
+            operatori="";
+        }else{
+            pamjaRezultatit.setText(pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().length()-1));
+        }
     }//GEN-LAST:event_backspaceActionPerformed
-   
+
+    private void fshijNumTeFunditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fshijNumTeFunditActionPerformed
+        if(operatori.isEmpty()){
+            pamjaRezultatit.setText("");
+            operatori="";
+        }else{
+            if(pamjaRezultatit.getText().lastIndexOf(operatori)==0){
+                pamjaRezultatit.setText("");
+                operatori="";
+            }else{
+                String fshirjaENum2= pamjaRezultatit.getText().substring(0,pamjaRezultatit.getText().lastIndexOf(operatori)+1);
+                pamjaRezultatit.setText(fshirjaENum2);
+            }
+        }
+    }//GEN-LAST:event_fshijNumTeFunditActionPerformed
+
+    private void negacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_negacionActionPerformed
+        if(operatori.isEmpty()){
+            if(eshteNumer(pamjaRezultatit.getText())){
+                double numri=Double.parseDouble(pamjaRezultatit.getText());
+                if(numri>0){
+                    operatori="-";
+                    pamjaRezultatit.setText(operatori+numri);
+                }else{
+                    String nderrimi=pamjaRezultatit.getText().substring(1,pamjaRezultatit.getText().length());
+                    operatori="+";
+                    pamjaRezultatit.setText(operatori+nderrimi);
+                }
+                numriPare=0;
+            }
+        }else{
+            if(pamjaRezultatit.getText().lastIndexOf(operatori)==0){
+                if(operatori.equals("+")){
+                    operatori="-";
+                    String ndryshimiOperatorit=pamjaRezultatit.getText().replace("+","-");
+                    pamjaRezultatit.setText(ndryshimiOperatorit);
+                }else if(operatori.equals("-")){
+                    operatori="+";
+                    String ndryshimiOperatorit=pamjaRezultatit.getText().replace("-","+");
+                    pamjaRezultatit.setText(ndryshimiOperatorit);
+                }
+            }else if(pamjaRezultatit.getText().lastIndexOf(operatori)>0){
+                int indeksiOperatorit =pamjaRezultatit.getText().lastIndexOf(operatori);
+                String pjesaPareERez=pamjaRezultatit.getText().substring(0,indeksiOperatorit);
+                String pjesaDyteERez=pamjaRezultatit.getText().substring(indeksiOperatorit,pamjaRezultatit.getText().length());
+                if(operatori.equals("+")){
+                    operatori="-";
+                    pjesaDyteERez=pjesaDyteERez.replace("+","-");
+                    pamjaRezultatit.setText(pjesaPareERez+pjesaDyteERez);
+                }else if(operatori.equals("-")){
+                    operatori="+";
+                    pjesaDyteERez=pjesaDyteERez.replace("-","+");
+                    pamjaRezultatit.setText(pjesaPareERez+pjesaDyteERez);
+                }
+            }
+        }
+    }//GEN-LAST:event_negacionActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -422,8 +629,8 @@ public class Calculator extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -441,7 +648,7 @@ public class Calculator extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Calculator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -454,7 +661,10 @@ public class Calculator extends javax.swing.JFrame {
     private javax.swing.JButton backspace;
     private javax.swing.JButton barazim;
     private javax.swing.JButton fshijEkranin;
+    private javax.swing.JButton fshijNumTeFundit;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton mbledhje;
+    private javax.swing.JButton negacion;
     private javax.swing.JButton num0;
     private javax.swing.JButton num1;
     private javax.swing.JButton num2;
