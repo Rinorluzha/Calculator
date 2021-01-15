@@ -8,7 +8,6 @@
  *
  * @author ASUS
  */
-import java.text.DecimalFormat;
 public class Calculator extends javax.swing.JFrame {
     double numriPare;
     double numriDyte;
